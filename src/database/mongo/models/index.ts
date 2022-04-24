@@ -1,4 +1,3 @@
-export * from './user'
 export * from './areas'
 export * from './career'
 export * from './key'

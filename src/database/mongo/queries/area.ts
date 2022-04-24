@@ -1,7 +1,8 @@
 import { Document, Types } from 'mongoose'
 
-import { AreaModel } from '..'
 import { AreaDTO } from 'schemas'
+import { StoreAreaDTO, UpdateAreaDTO } from 'graphQL/models/Area/schemas'
+import { AreaModel } from '..'
 
 const areaDBOtoDTO = (
   areaDBO: Document<unknown, unknown, AreaDBO> &
@@ -12,29 +13,32 @@ const areaDBOtoDTO = (
   updatedAt: areaDBO.updatedAt.toISOString()
 })
 
-const getArea = async (name: string): Promise<AreaDTO | null> => {
-  const result = await AreaModel.findOne({ name })
-
-  if (!result) throw new Error("The requested area doesn't exist.")
+const getArea = async (code: number): Promise<AreaDTO | null> => {
+  const result = await AreaModel.findOne({ code })
 
   return result ? areaDBOtoDTO(result) : null
 }
 
-const getAreas = async (): Promise<AreaDTO[]> => {
-  const areas = await AreaModel.find({})
+const getAreas = async (sort: 1 | -1 = -1): Promise<AreaDTO[]> => {
+  const areas = await AreaModel.find({}).sort({ code: sort })
 
   return areas.map(a => areaDBOtoDTO(a))
 }
 
-const storeArea = async (areaData: AreaDTO): Promise<AreaDTO> => {
-  const area = new AreaModel(areaData)
+const storeArea = async (areaData: StoreAreaDTO): Promise<AreaDTO> => {
+  let code = 1
+  const areas = await getAreas()
+
+  if (areas.length > 0) code = areas[0].code + 1
+
+  const area = new AreaModel({ ...areaData, code })
 
   await area.save()
 
   return areaDBOtoDTO(area)
 }
 
-const updateArea = async (areaData: AreaDTO): Promise<AreaDTO | null> => {
+const updateArea = async (areaData: UpdateAreaDTO): Promise<AreaDTO | null> => {
   const { id, ...rest } = areaData
   const area = await AreaModel.findByIdAndUpdate(id, rest, { new: true })
 

@@ -17,4 +17,4 @@ const ajv = addFormats(new Ajv(), ['email'])
   .addKeyword('modifier')
 
 export { id, ID, idSchema, IDSchema, ajv }
-export * from './user'
+export * from './area'

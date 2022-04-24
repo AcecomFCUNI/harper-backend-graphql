@@ -11,7 +11,7 @@ import mongoose from 'mongoose'
 import { mergedSchema as schema } from 'graphQL'
 import { applyRoutes } from './router'
 
-const PORT = process.env.PORT ?? 1996
+const PORT = process.env.PORT ?? 4000
 
 class Server {
   #app: FastifyInstance

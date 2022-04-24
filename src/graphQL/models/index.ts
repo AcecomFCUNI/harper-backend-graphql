@@ -1,9 +1,9 @@
 import { mergeSchemas } from '@graphql-tools/schema'
 
-import { User } from './User'
+import { Area } from './Area'
 
 const mergedSchema = mergeSchemas({
-  schemas: [User]
+  schemas: [Area]
 })
 
 export { mergedSchema }

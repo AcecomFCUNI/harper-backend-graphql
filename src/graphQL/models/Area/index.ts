@@ -1,6 +1,6 @@
 import { makeExecutableSchema } from '@graphql-tools/schema'
 
-import { User as UserTD } from './typeDefs'
+import { Area as AreaTD } from './typeDefs'
 import { Query } from './queriesResolver'
 import { Mutation } from './mutationsResolver'
 
@@ -9,9 +9,9 @@ const resolvers = {
   Mutation
 }
 
-const User = makeExecutableSchema({
-  typeDefs: UserTD,
+const Area = makeExecutableSchema({
+  typeDefs: AreaTD,
   resolvers
 })
 
-export { User }
+export { Area }
