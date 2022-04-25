@@ -9,6 +9,7 @@ const StatusSchema = new Schema<StatusDBO>(
     }
   },
   {
+    timestamps: true,
     versionKey: false,
     toObject: {
       transform: (_, ret) => {
