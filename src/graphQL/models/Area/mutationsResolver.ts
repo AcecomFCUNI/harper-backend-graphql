@@ -6,10 +6,11 @@ import {
   AreaDTO,
   storeAreaDto,
   StoreAreaDTO,
+  updateAreaDto,
   UpdateAreaDTO
 } from 'schemas'
 import { errorHandling, GE } from '../utils'
-import { storeArea, updateArea } from './mutation'
+import { storeArea, updateArea } from './mutations'
 
 const Mutation = {
   storeArea: async (
@@ -50,7 +51,7 @@ const Mutation = {
     context: Context
   ): Promise<AreaDTO> => {
     const { log } = context
-    const validate = ajv.compile(storeAreaDto)
+    const validate = ajv.compile(updateAreaDto)
 
     try {
       const ok = validate(area)

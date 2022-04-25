@@ -4,16 +4,16 @@ const Area = gql`
   type Area {
     id: ID!
     abstract: String!
-    code: Int
-    image: String
-    name: String
-    createdAt: String
-    updatedAt: String
+    code: Int!
+    image: String!
+    name: String!
+    createdAt: String!
+    updatedAt: String!
   }
 
   type Query {
-    getAreas: [Area!]!
     getArea(code: Int!): Area!
+    getAreas: [Area!]!
   }
 
   input StoreAreaInput {

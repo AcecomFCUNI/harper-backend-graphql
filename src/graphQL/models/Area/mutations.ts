@@ -22,7 +22,10 @@ const storeArea = async (
   }
 }
 
-const updateArea = async (areaData: UpdateAreaDTO, { log }: Context) => {
+const updateArea = async (
+  areaData: UpdateAreaDTO,
+  { log }: Context
+): Promise<AreaDTO> => {
   try {
     const result = await ua(areaData)
 
