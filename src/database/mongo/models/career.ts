@@ -14,6 +14,7 @@ const CareerSchema = new Schema<CareerDBO>(
     }
   },
   {
+    timestamps: true,
     versionKey: false,
     toObject: {
       transform: (_, ret) => {
@@ -24,6 +25,6 @@ const CareerSchema = new Schema<CareerDBO>(
   }
 )
 
-const CareerModel = model<CareerDBO>('users', CareerSchema)
+const CareerModel = model<CareerDBO>('careers', CareerSchema)
 
 export { CareerModel }
