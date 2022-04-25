@@ -3,26 +3,26 @@ import { ApolloError } from 'apollo-server-core'
 
 import {
   ajv,
-  AreaDTO,
-  storeAreaDto,
-  StoreAreaDTO,
-  updateAreaDto,
-  UpdateAreaDTO
+  StatusDTO,
+  storeStatusDto,
+  StoreStatusDTO,
+  updateStatusDto,
+  UpdateStatusDTO
 } from 'schemas'
 import { errorHandling, GE } from '../utils'
-import { storeArea, updateArea } from './mutations'
+import { storeStatus, updateStatus } from './mutations'
 
 const Mutation = {
-  storeArea: async (
+  storeStatus: async (
     parent: unknown,
-    { area }: { area: StoreAreaDTO },
+    { status }: { status: StoreStatusDTO },
     context: Context
-  ): Promise<AreaDTO> => {
+  ): Promise<StatusDTO> => {
     const { log } = context
-    const validate = ajv.compile(storeAreaDto)
+    const validate = ajv.compile(storeStatusDto)
 
     try {
-      const ok = validate(area)
+      const ok = validate(status)
 
       if (!ok)
         throw new ApolloError(
@@ -33,7 +33,7 @@ const Mutation = {
           'UNPROCESSABLE_ENTITY'
         )
 
-      return await storeArea(area, context)
+      return await storeStatus(status, context)
     } catch (e) {
       log.error(validate.errors)
 
@@ -45,16 +45,16 @@ const Mutation = {
       })
     }
   },
-  updateArea: async (
+  updateStatus: async (
     parent: unknown,
-    { area }: { area: UpdateAreaDTO },
+    { status }: { status: UpdateStatusDTO },
     context: Context
-  ): Promise<AreaDTO> => {
+  ): Promise<StatusDTO> => {
     const { log } = context
-    const validate = ajv.compile(updateAreaDto)
+    const validate = ajv.compile(updateStatusDto)
 
     try {
-      const ok = validate(area)
+      const ok = validate(status)
 
       if (!ok)
         throw new ApolloError(
@@ -65,7 +65,7 @@ const Mutation = {
           'UNPROCESSABLE_ENTITY'
         )
 
-      return await updateArea(area, context)
+      return await updateStatus(status, context)
     } catch (e) {
       log.error(validate.errors)
 

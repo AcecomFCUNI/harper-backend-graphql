@@ -33,7 +33,7 @@ const Mutation = {
           'UNPROCESSABLE_ENTITY'
         )
 
-      return await storeCareer(career, { log })
+      return await storeCareer(career, context)
     } catch (e) {
       log.error(validate.errors)
 

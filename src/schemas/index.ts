@@ -19,3 +19,4 @@ const ajv = addFormats(new Ajv(), ['email'])
 export { id, ID, idSchema, IDSchema, ajv }
 export * from './area'
 export * from './career'
+export * from './status'
