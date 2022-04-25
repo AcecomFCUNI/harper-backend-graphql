@@ -1,7 +1,6 @@
 import { Document, Types } from 'mongoose'
 
-import { AreaDTO } from 'schemas'
-import { StoreAreaDTO, UpdateAreaDTO } from 'graphQL/models/Area/schemas'
+import { AreaDTO, StoreAreaDTO, UpdateAreaDTO } from 'schemas'
 import { AreaModel } from '..'
 
 const areaDBOtoDTO = (

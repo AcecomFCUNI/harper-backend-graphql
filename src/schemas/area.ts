@@ -1,15 +1,6 @@
 import { Static, Type } from '@sinclair/typebox'
 
-import { id } from '.'
-
-const area = Type.Object({
-  abstract: Type.String(),
-  code: Type.Number(),
-  image: Type.String(),
-  name: Type.String()
-})
-
-type Area = Static<typeof area>
+import { id } from 'schemas'
 
 const areaDto = Type.Object({
   id: Type.Optional(id),
@@ -23,4 +14,28 @@ const areaDto = Type.Object({
 
 type AreaDTO = Static<typeof areaDto>
 
-export { areaDto, AreaDTO, area, Area }
+const storeAreaDto = Type.Object({
+  abstract: Type.String(),
+  image: Type.String(),
+  name: Type.String()
+})
+
+type StoreAreaDTO = Static<typeof storeAreaDto>
+
+const updateAreaDto = Type.Object({
+  id,
+  abstract: Type.Optional(Type.String()),
+  image: Type.Optional(Type.String()),
+  name: Type.Optional(Type.String())
+})
+
+type UpdateAreaDTO = Static<typeof updateAreaDto>
+
+export {
+  areaDto,
+  AreaDTO,
+  storeAreaDto,
+  StoreAreaDTO,
+  updateAreaDto,
+  UpdateAreaDTO
+}

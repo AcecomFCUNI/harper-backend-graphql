@@ -1,8 +1,7 @@
 import { ApolloError } from 'apollo-server-core'
 
 import { storeArea as sa, updateArea as ua } from 'database'
-import { AreaDTO } from 'schemas'
-import { StoreAreaDTO, UpdateAreaDTO } from './schemas'
+import { AreaDTO, StoreAreaDTO, UpdateAreaDTO } from 'schemas'
 import { GE, errorHandling, EFA } from '../utils'
 
 const storeArea = async (

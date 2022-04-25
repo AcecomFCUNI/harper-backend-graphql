@@ -1,10 +1,15 @@
 import { DefinedError } from 'ajv'
 import { ApolloError } from 'apollo-server-core'
 
-import { ajv, AreaDTO } from 'schemas'
+import {
+  ajv,
+  AreaDTO,
+  storeAreaDto,
+  StoreAreaDTO,
+  UpdateAreaDTO
+} from 'schemas'
 import { errorHandling, GE } from '../utils'
 import { storeArea, updateArea } from './mutation'
-import { storeAreaDto, StoreAreaDTO, UpdateAreaDTO } from './schemas'
 
 const Mutation = {
   storeArea: async (
