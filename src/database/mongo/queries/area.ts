@@ -44,4 +44,4 @@ const updateArea = async (areaData: UpdateAreaDTO): Promise<AreaDTO | null> => {
   return area ? areaDBOtoDTO(area) : null
 }
 
-export { getArea, getAreas, storeArea, updateArea }
+export { areaDBOtoDTO, getArea, getAreas, storeArea, updateArea }

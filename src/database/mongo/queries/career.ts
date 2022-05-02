@@ -41,4 +41,4 @@ const updateCareer = async (
   return career ? careerDBOtoDTO(career) : null
 }
 
-export { getCareer, getCareers, storeCareer, updateCareer }
+export { careerDBOtoDTO, getCareer, getCareers, storeCareer, updateCareer }

@@ -18,6 +18,14 @@ const getOneStatus = async (id: string): Promise<StatusDTO | null> => {
   return status ? statusDBOtoDTO(status) : null
 }
 
+const getOneStatusByName = async (
+  statusName: string
+): Promise<StatusDTO | null> => {
+  const status = await StatusModel.findOne({ name: statusName })
+
+  return status ? statusDBOtoDTO(status) : null
+}
+
 const getAllStatus = async (sort: 1 | -1 = -1): Promise<StatusDTO[]> => {
   const status = await StatusModel.find({}).sort({ name: sort })
 
@@ -41,4 +49,11 @@ const updateStatus = async (
   return status ? statusDBOtoDTO(status) : null
 }
 
-export { getOneStatus, getAllStatus, storeStatus, updateStatus }
+export {
+  statusDBOtoDTO,
+  getOneStatus,
+  getOneStatusByName,
+  getAllStatus,
+  storeStatus,
+  updateStatus
+}
