@@ -1,6 +1,6 @@
 import { gql } from 'apollo-server-core'
 
-const Career = gql`
+const CareerTD = gql`
   type Career {
     id: ID!
     code: String!
@@ -31,4 +31,4 @@ const Career = gql`
   }
 `
 
-export { Career }
+export { CareerTD }

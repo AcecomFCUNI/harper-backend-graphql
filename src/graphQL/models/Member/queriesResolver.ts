@@ -1,17 +1,17 @@
-import { CareerDTO } from 'schemas'
-import { getCareer, getCareers } from './queries'
+import { MemberDTO } from 'schemas'
+import { getMember, getMembers } from './queries'
 import { errorHandling, GE } from '../utils'
 
 const Query = {
-  getCareer: async (
+  getMember: async (
     parent: unknown,
-    { code }: { code: string },
+    { id }: { id: string },
     context: Context
-  ): Promise<CareerDTO> => {
+  ): Promise<MemberDTO> => {
     const { log } = context
 
     try {
-      const result = await getCareer(code, context)
+      const result = await getMember(id, context)
 
       return result
     } catch (e) {
@@ -23,11 +23,11 @@ const Query = {
       })
     }
   },
-  getCareers: async (
+  getMembers: async (
     parent: unknown,
     args: unknown,
     context: Context
-  ): Promise<CareerDTO[]> => await getCareers(context)
+  ): Promise<MemberDTO[]> => await getMembers(context)
 }
 
 export { Query }

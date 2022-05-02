@@ -1,10 +1,10 @@
 import { Query } from './queriesResolver'
 import { Mutation } from './mutationsResolver'
 
-const CareerResolver = {
+const MemberResolvers = {
   Query,
   Mutation
 }
 
-export { CareerResolver }
+export { MemberResolvers }
 export * from './typeDefs'

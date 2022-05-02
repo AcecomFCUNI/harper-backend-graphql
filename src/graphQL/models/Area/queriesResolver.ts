@@ -1,6 +1,6 @@
 import { AreaDTO } from 'schemas'
-import { errorHandling, GE } from '../utils'
 import { getArea, getAreas } from './queries'
+import { errorHandling, GE } from '../utils'
 
 const Query = {
   getArea: async (

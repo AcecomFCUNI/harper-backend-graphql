@@ -1,11 +1,23 @@
+import { mergeTypeDefs, mergeResolvers } from '@graphql-tools/merge'
 import { mergeSchemas } from '@graphql-tools/schema'
 
-import { Area } from './Area'
-import { Career } from './Career'
-import { Status } from './Status'
+import { AreaTD, AreaResolvers } from './Area'
+import { CareerTD, CareerResolver } from './Career'
+import { MemberTD, MemberResolvers } from './Member'
+import { StatusTD, StatusResolvers } from './Status'
+
+const mergedTypes = mergeTypeDefs([AreaTD, CareerTD, MemberTD, StatusTD])
+
+const mergedResolvers = mergeResolvers([
+  AreaResolvers,
+  CareerResolver,
+  MemberResolvers,
+  StatusResolvers
+])
 
 const mergedSchema = mergeSchemas({
-  schemas: [Area, Career, Status]
+  typeDefs: mergedTypes,
+  resolvers: mergedResolvers
 })
 
 export { mergedSchema }

@@ -1,4 +1,4 @@
-type ID = import('mongoose').Schema.Types.ObjectId
+type ID = import('mongoose').Types.ObjectId
 
 interface MemberDBO {
   id: string
@@ -18,25 +18,17 @@ interface MemberDBO {
   updatedAt: Date
 }
 
-interface MemberAreaDBO extends MemberDBO {
-  area: import('mongoose').PopulatedDoc<AreaDBO>
+interface MemberAreaCareerStatusDBO extends MemberDBO {
+  area: import('mongoose').PopulatedDoc<
+    import('mongoose').Document<unknown, unknown, AreaDBO> &
+      AreaDBO & { _id: import('mongoose').Types.ObjectId }
+  >
+  career: import('mongoose').PopulatedDoc<
+    import('mongoose').Document<unknown, unknown, CareerDBO> &
+      CareerDBO & { _id: import('mongoose').Types.ObjectId }
+  >
+  status: import('mongoose').PopulatedDoc<
+    import('mongoose').Document<unknown, unknown, StatusDBO> &
+      StatusDBO & { _id: import('mongoose').Types.ObjectId }
+  >
 }
-
-interface MemberCareerDBO extends MemberDBO {
-  career: import('mongoose').PopulatedDoc<CareerDBO>
-}
-
-interface MemberStatusDBO extends MemberDBO {
-  status: import('mongoose').PopulatedDoc<StatusDBO>
-}
-
-interface MemberAreaCareerDBO extends MemberAreaDBO, MemberCareerDBO {}
-
-interface MemberAreaStatusDBO extends MemberAreaDBO, MemberStatusDBO {}
-
-interface MemberCareerStatusDBO extends MemberCareerDBO, MemberStatusDBO {}
-
-interface MemberAreaCareerStatusDBO
-  extends MemberAreaDBO,
-    MemberCareerDBO,
-    MemberStatusDBO {}

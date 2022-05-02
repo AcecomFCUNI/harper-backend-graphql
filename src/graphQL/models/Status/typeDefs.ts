@@ -1,6 +1,6 @@
 import { gql } from 'apollo-server-core'
 
-const Status = gql`
+const StatusTD = gql`
   type Status {
     id: ID!
     name: String!
@@ -26,4 +26,4 @@ const Status = gql`
   }
 `
 
-export { Status }
+export { StatusTD }

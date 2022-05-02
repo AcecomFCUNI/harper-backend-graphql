@@ -1,6 +1,6 @@
 import { gql } from 'apollo-server-core'
 
-const Area = gql`
+const AreaTD = gql`
   type Area {
     id: ID!
     abstract: String!
@@ -35,4 +35,4 @@ const Area = gql`
   }
 `
 
-export { Area }
+export { AreaTD }
