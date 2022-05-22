@@ -2,13 +2,13 @@ import { ApolloError } from 'apollo-server-core'
 
 import { getMembers as gms, getMember as gm } from 'database'
 import { MemberDTO } from 'schemas'
-import { EFA, GE, errorHandling } from '../utils'
+import { EFM, GE, errorHandling } from '../utils'
 
 const getMember = async (id: string, { log }: Context): Promise<MemberDTO> => {
   try {
     const member = await gm(id)
 
-    if (!member) throw new ApolloError(EFA.NOT_FOUND, 'NOT_FOUND')
+    if (!member) throw new ApolloError(EFM.NOT_FOUND, 'NOT_FOUND')
 
     return member
   } catch (e) {

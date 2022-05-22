@@ -21,14 +21,17 @@ interface MemberDBO {
 interface MemberAreaCareerStatusDBO extends MemberDBO {
   area: import('mongoose').PopulatedDoc<
     import('mongoose').Document<unknown, unknown, AreaDBO> &
-      AreaDBO & { _id: import('mongoose').Types.ObjectId }
+      AreaDBO & { _id: import('mongoose').Types.ObjectId },
+    ID
   >
   career: import('mongoose').PopulatedDoc<
     import('mongoose').Document<unknown, unknown, CareerDBO> &
-      CareerDBO & { _id: import('mongoose').Types.ObjectId }
+      CareerDBO & { _id: import('mongoose').Types.ObjectId },
+    ID
   >
   status: import('mongoose').PopulatedDoc<
     import('mongoose').Document<unknown, unknown, StatusDBO> &
-      StatusDBO & { _id: import('mongoose').Types.ObjectId }
+      StatusDBO & { _id: import('mongoose').Types.ObjectId },
+    ID
   >
 }

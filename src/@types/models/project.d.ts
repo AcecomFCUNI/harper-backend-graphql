@@ -12,14 +12,15 @@ interface ProjectDBO {
   updatedAt: Date
 }
 
-interface ProjectAreaDBO extends ProjectDBO {
-  area: import('mongoose').PopulatedDoc<AreaDBO>
+interface ProjectAreaParticipantsDBO extends ProjectDBO {
+  area: import('mongoose').PopulatedDoc<
+    import('mongoose').Document<unknown, unknown, AreaDBO> &
+      AreaDBO & { _id: import('mongoose').Types.ObjectId },
+    ID
+  >
+  participants: import('mongoose').PopulatedDoc<
+    (import('mongoose').Document<unknown, unknown, MemberDBO> &
+      MemberDBO & { _id: import('mongoose').Types.ObjectId })[],
+    ID[]
+  >
 }
-
-interface ProjectParticipantsDBO extends ProjectDBO {
-  participants: import('mongoose').PopulatedDoc<AreaDBO[]>
-}
-
-interface ProjectAreaParticipantsDBO
-  extends ProjectAreaDBO,
-    ProjectParticipantsDBO {}
