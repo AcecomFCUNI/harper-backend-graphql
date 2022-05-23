@@ -15,7 +15,7 @@ const ProjectTD = gql`
 
   type Query {
     getProject(id: String!): Project!
-    getProjectPerArea(areaId: String!): [Projects]!
+    getProjectPerArea(areaId: String!): [Project]!
   }
 
   input StoreProjectInput {
