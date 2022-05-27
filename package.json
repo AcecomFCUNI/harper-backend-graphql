@@ -24,6 +24,7 @@
     "apollo-server-plugin-base": "^3.5.3",
     "cron": "^2.0.0",
     "fastify": "^3.29.0",
+    "googleapis": "^100.0.0",
     "graphql": "^16.5.0",
     "http-errors": "^2.0.0",
     "mongoose": "^6.3.4",

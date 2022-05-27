@@ -9,6 +9,7 @@ import { ApolloServerPlugin } from 'apollo-server-plugin-base'
 import mongoose from 'mongoose'
 
 import { mergedSchema as schema } from 'graphQL'
+import { birthdayChecker } from 'utils'
 import { applyRoutes } from './router'
 
 const PORT = process.env.PORT ?? 4000
@@ -38,11 +39,15 @@ class Server {
 
   async #mongo(): Promise<void> {
     this.#connection = mongoose.connection
-    const connection = {
+
+    const connectionConfig = {
       keepAlive: true,
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
+      connectTimeoutMS: 3000,
+      socketTimeoutMS: 3000
     }
+
     this.#connection.on('connected', () => {
       this.#app.log.info('Mongo connection established.')
     })
@@ -52,12 +57,11 @@ class Server {
     this.#connection.on('disconnected', () => {
       this.#app.log.info('Mongo connection disconnected')
       this.#app.log.info('Trying to reconnected to Mongo...')
-      setTimeout(() => {
-        mongoose.connect(process.env.MONGO_URI as string, {
-          ...connection,
-          connectTimeoutMS: 3000,
-          socketTimeoutMS: 3000
-        })
+      setTimeout(async () => {
+        await mongoose.connect(
+          process.env.MONGO_URI as string,
+          connectionConfig
+        )
       }, 3000)
     })
     this.#connection.on('close', () => {
@@ -67,7 +71,7 @@ class Server {
       this.#app.log.info('Mongo connection error:')
       this.#app.log.error(e)
     })
-    await mongoose.connect(process.env.MONGO_URI as string, connection)
+    await mongoose.connect(process.env.MONGO_URI as string, connectionConfig)
   }
 
   #fastifyAppClosePlugin(): ApolloServerPlugin {
@@ -107,6 +111,7 @@ class Server {
         })
       )
       await this.#mongo()
+      birthdayChecker.start()
       await this.#app.listen(PORT)
       this.#app.log.info(
         `GraphQL server listening at: http://localhost:${PORT}${server.graphqlPath}`

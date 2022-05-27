@@ -29,7 +29,7 @@ const birthdayChecker = new CronJob(
       return memberBirthday === `${month},${day}`
     })
 
-    if (chosenMembers.length !== 0) {
+    if (chosenMembers.length !== 0)
       await Promise.all(
         chosenMembers.map(async member =>
           Promise.all([
@@ -48,7 +48,6 @@ const birthdayChecker = new CronJob(
           ])
         )
       )
-    }
   }
 )
 
