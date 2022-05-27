@@ -64,6 +64,12 @@ const getMembers = async (sort: 1 | -1 = -1): Promise<MemberDTO[]> => {
   return members.map(m => memberDBOtoDTO(m))
 }
 
+const getOnlyMembers = async (sort: 1 | -1 = -1): Promise<MemberDTO[]> => {
+  const members = await MemberModel.find({}).sort({ lastName: sort })
+
+  return members.map(m => memberDBOtoDTO(m))
+}
+
 const storeMember = async (memberData: StoreMemberDTO): Promise<MemberDTO> => {
   const { area, career, status } = await getReferencedData(memberData)
 
@@ -194,6 +200,7 @@ export {
   memberDBOtoDTO,
   getMember,
   getMembers,
+  getOnlyMembers,
   storeMember,
   storeMembers,
   updateMember
