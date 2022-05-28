@@ -1,4 +1,4 @@
-import nodemailer from 'nodemailer'
+import nodemailer, { SentMessageInfo } from 'nodemailer'
 import { google } from 'googleapis'
 
 const CLIENT_ID = process.env.CLIENT_ID || ''
@@ -20,8 +20,8 @@ const mailer = async (
   subject: string,
   text: string,
   to: string,
-  html?: string
-): Promise<void> => {
+  html: string | Buffer = ''
+): Promise<SentMessageInfo> => {
   const { token, res } = await oAuth2Client.getAccessToken()
 
   if (!token) {
@@ -45,7 +45,7 @@ const mailer = async (
 
   const mailOptions = {
     from: `ACECOM <${EMAIL_SENDER}>`,
-    html: html || '',
+    html,
     sender: EMAIL_SENDER,
     subject,
     text,
@@ -55,7 +55,7 @@ const mailer = async (
   try {
     const result = await transporter.sendMail(mailOptions)
 
-    console.log('Mail result: ', result)
+    return result
   } catch (err) {
     console.log('Error at mailer.js')
 
