@@ -16,12 +16,17 @@ oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN })
 
 const EMAIL_SENDER = process.env.EMAIL_SENDER as string
 
-const mailer = async (
-  subject: string,
-  text: string,
-  to: string,
-  html: string | Buffer = ''
-): Promise<SentMessageInfo> => {
+const mailer = async ({
+  subject,
+  to,
+  text,
+  html = ''
+}: {
+  subject: string
+  to: string
+  text?: string
+  html?: string | Buffer
+}): Promise<SentMessageInfo> => {
   const { token, res } = await oAuth2Client.getAccessToken()
 
   if (!token) {

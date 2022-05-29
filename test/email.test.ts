@@ -18,12 +18,12 @@ const mockupResult = {
 
 describe('Mail test', () => {
   it('Should send the email', async () => {
-    const result: SentMessageInfo = await mailer(
-      'Test',
-      'test',
-      'sluzquinosa@uni.pe',
-      readFileSync(join(__dirname, '../src/utils/hb.html'))
-    )
+    const result: SentMessageInfo = await mailer({
+      subject: 'Test',
+      text: 'test',
+      to: 'sluzquinosa@uni.pe',
+      html: readFileSync(join(__dirname, '../src/utils/hb.html'))
+    })
 
     expect(Object.keys(result)).toEqual(
       expect.arrayContaining(Object.keys(mockupResult))

@@ -52,7 +52,7 @@ class Server {
       this.#app.log.info('Mongo connection established.')
     })
     this.#connection.on('reconnected', () => {
-      this.#app.log.info('Mongo connection reestablished')
+      this.#app.log.info('Mongo connection reestablished.')
     })
     this.#connection.on('disconnected', () => {
       this.#app.log.info('Mongo connection disconnected')
@@ -65,7 +65,7 @@ class Server {
       }, 3000)
     })
     this.#connection.on('close', () => {
-      this.#app.log.info('Mongo connection closed')
+      this.#app.log.info('Mongo connection closed.')
     })
     this.#connection.on('error', (e: Error) => {
       this.#app.log.info('Mongo connection error:')
