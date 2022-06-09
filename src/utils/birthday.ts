@@ -17,9 +17,8 @@ const birthdayChecker = new CronJob(
       month = (currentDate.getMonth() + 1).toString()
     else month = `0${currentDate.getMonth() + 1}`
 
-    if (currentDate.getUTCDate() >= 10)
-      day = currentDate.getUTCDate().toString()
-    else day = `0${currentDate.getUTCDate()}`
+    if (currentDate.getDate() >= 10) day = currentDate.getDate().toString()
+    else day = `0${currentDate.getDate()}`
 
     const members = await getOnlyMembers()
     const chosenMembers = members.filter(member => {
@@ -33,7 +32,7 @@ const birthdayChecker = new CronJob(
     })
 
     if (chosenMembers.length !== 0) {
-      const aux = chosenMembers
+      const mailPromiseArray = chosenMembers
         .map(async member => [
           mailer({
             subject: '¡Feliz cumpleaños!',
@@ -60,7 +59,8 @@ const birthdayChecker = new CronJob(
           })
         ])
         .flat(Infinity)
-      await Promise.allSettled(aux)
+
+      await Promise.allSettled(mailPromiseArray)
     }
   }
 )
