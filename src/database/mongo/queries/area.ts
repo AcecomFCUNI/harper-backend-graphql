@@ -18,7 +18,7 @@ const getArea = async (code: number): Promise<AreaDTO | null> => {
   return area ? areaDBOtoDTO(area) : null
 }
 
-const getAreas = async (sort: 1 | -1 = -1): Promise<AreaDTO[]> => {
+const getAreas = async (sort: 1 | -1 = 1): Promise<AreaDTO[]> => {
   const areas = await AreaModel.find({}).sort({ code: sort })
 
   return areas.map(a => areaDBOtoDTO(a))
