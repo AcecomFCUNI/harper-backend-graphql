@@ -129,3 +129,4 @@ dist
 data
 ecosystem.config.js
 test/setEnvVars.ts
+*.http

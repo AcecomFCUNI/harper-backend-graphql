@@ -1,4 +1,5 @@
 import { FastifyInstance } from 'fastify'
+
 import { response } from 'network/response'
 
 const Home = (app: FastifyInstance, prefix = '/'): void => {

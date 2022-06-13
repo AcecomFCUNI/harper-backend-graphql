@@ -54,7 +54,7 @@ const birthdayChecker = new CronJob(
           }),
           mailer({
             subject: 'Birthday report',
-            to: process.env.EMAIL_BIRTHDAY_REPORT as string,
+            to: process.env.EMAIL_REPORT as string,
             text: `Today was ${member.name}'s birthday`
           })
         ])

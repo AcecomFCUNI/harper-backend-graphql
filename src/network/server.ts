@@ -34,6 +34,8 @@ class Server {
       reply.header('x-powered-by', 'Simba.js')
       done()
     })
+    // TODO: upgrade to fastify 4
+    // this.#app.setValidatorCompiler(validatorCompiler)
     applyRoutes(this.#app)
   }
 
