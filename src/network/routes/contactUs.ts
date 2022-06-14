@@ -16,11 +16,9 @@ const ContactUs = (app: FastifyInstance, prefix = '/api'): void => {
       preHandler: [authHandler]
     },
     (request, reply) => {
-      const {
-        body: { lastName, mail, message, name, subject }
-      } = request
+      const { body } = request
       const cus = new ContactUsService({
-        emailDto: { lastName, mail, message, name, subject }
+        emailDto: body
       })
       cus.process({ type: 'mail' })
 

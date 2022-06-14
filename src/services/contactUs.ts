@@ -30,13 +30,13 @@ class ContactUsService {
 
   async #mail(): Promise<void> {
     const {
-      emailDto: { lastName, mail, message, name, subject }
+      emailDto: { name, mail, phone, message, subject }
     } = this.#args
 
     try {
       await mailer({
         subject,
-        text: `Message from: ACECOM's web page\nContact info:\nFull name: ${name} ${lastName}\nEmail: ${mail}\nMessage: ${message}`,
+        text: `Message from: ACECOM's web page\n\nContact info:\n- Full name: ${name}\n- Email: ${mail}\n- Phone: ${phone}\n\nMessage: ${message}`,
         to: process.env.EMAIL_REPORT as string
       })
     } catch (e) {
