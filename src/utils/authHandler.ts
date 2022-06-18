@@ -20,7 +20,7 @@ const authHandler = async (
 
   const token = headerToken.split(' ')[1]
 
-  if (token !== process.env.CLIENT_SECRET)
+  if (token !== process.env.TOKEN)
     return response({
       error: true,
       message: 'Could not authorize',
