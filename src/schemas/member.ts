@@ -20,7 +20,8 @@ const memberDto = Type.Object({
   photo: Type.String(),
   status: Type.Union([id, statusDto]),
   createdAt: Type.Optional(Type.String()),
-  updatedAt: Type.Optional(Type.String())
+  updatedAt: Type.Optional(Type.String()),
+  displayName: Type.String()
 })
 
 type MemberDTO = Static<typeof memberDto>
@@ -59,7 +60,8 @@ const updateMemberDto = Type.Object({
   name: Type.Optional(Type.String()),
   phone: Type.Optional(Type.Array(Type.String())),
   photo: Type.Optional(Type.String()),
-  status: Type.Optional(Type.String())
+  status: Type.Optional(Type.String()),
+  displayName: Type.Optional(Type.String())
 })
 
 type UpdateMemberDTO = Static<typeof updateMemberDto>

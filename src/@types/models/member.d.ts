@@ -16,6 +16,7 @@ interface MemberDBO {
   status: ID
   createdAt: Date
   updatedAt: Date
+  displayName?: string
 }
 
 interface MemberAreaCareerStatusDBO extends MemberDBO {

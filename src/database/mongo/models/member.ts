@@ -53,7 +53,8 @@ const MemberSchema = new Schema<MemberDBO>(
       ref: 'status',
       required: true,
       type: Schema.Types.ObjectId
-    }
+    },
+    displayName: String
   },
   {
     timestamps: true,

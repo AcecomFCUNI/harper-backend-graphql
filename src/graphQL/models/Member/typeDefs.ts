@@ -17,10 +17,11 @@ const MemberTD = gql`
     status: Status!
     createdAt: String!
     updatedAt: String!
+    displayName: String
   }
 
   type Query {
-    getMember(code: Int!): Member!
+    getMember(id: String!): Member!
     getMembers: [Member!]!
   }
 
@@ -53,6 +54,7 @@ const MemberTD = gql`
     phone: [String!]
     photo: String
     status: String
+    displayName: String
   }
 
   type Mutation {
