@@ -17,6 +17,7 @@ interface MemberDBO {
   createdAt: Date
   updatedAt: Date
   displayName?: string
+  linkedin?: string
 }
 
 interface MemberAreaCareerStatusDBO extends MemberDBO {

@@ -1,8 +1,8 @@
 import { Static, Type } from '@sinclair/typebox'
 
-import { id } from 'schemas'
 import { areaDto } from './area'
 import { careerDto } from './career'
+import { id, Nullable } from './helpers'
 import { statusDto } from './status'
 
 const memberDto = Type.Object({
@@ -21,7 +21,8 @@ const memberDto = Type.Object({
   status: Type.Union([id, statusDto]),
   createdAt: Type.Optional(Type.String()),
   updatedAt: Type.Optional(Type.String()),
-  displayName: Type.String()
+  displayName: Type.Optional(Nullable(Type.String())),
+  linkedin: Type.Optional(Nullable(Type.String()))
 })
 
 type MemberDTO = Static<typeof memberDto>
@@ -38,7 +39,9 @@ const storeMemberDto = Type.Object({
   name: Type.String(),
   phone: Type.Array(Type.String()),
   photo: Type.String(),
-  status: Type.String()
+  status: Type.String(),
+  displayName: Type.Optional(Type.String()),
+  linkedin: Type.Optional(Type.String())
 })
 
 type StoreMemberDTO = Static<typeof storeMemberDto>
@@ -61,7 +64,8 @@ const updateMemberDto = Type.Object({
   phone: Type.Optional(Type.Array(Type.String())),
   photo: Type.Optional(Type.String()),
   status: Type.Optional(Type.String()),
-  displayName: Type.Optional(Type.String())
+  displayName: Type.Optional(Type.String()),
+  linkedin: Type.Optional(Type.String())
 })
 
 type UpdateMemberDTO = Static<typeof updateMemberDto>

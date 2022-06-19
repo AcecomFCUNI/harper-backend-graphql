@@ -54,7 +54,8 @@ const MemberSchema = new Schema<MemberDBO>(
       required: true,
       type: Schema.Types.ObjectId
     },
-    displayName: String
+    displayName: String,
+    linkedin: String
   },
   {
     timestamps: true,

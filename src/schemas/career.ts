@@ -1,6 +1,6 @@
 import { Static, Type } from '@sinclair/typebox'
 
-import { id } from '.'
+import { id } from './helpers'
 
 const career = Type.Object({
   code: Type.String(),

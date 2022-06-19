@@ -18,6 +18,7 @@ const MemberTD = gql`
     createdAt: String!
     updatedAt: String!
     displayName: String
+    linkedin: String
   }
 
   type Query {
@@ -38,6 +39,8 @@ const MemberTD = gql`
     phone: [String!]!
     photo: String!
     status: String!
+    displayName: String
+    linkedin: String
   }
 
   input UpdateMemberInput {
@@ -55,6 +58,7 @@ const MemberTD = gql`
     photo: String
     status: String
     displayName: String
+    linkedin: String
   }
 
   type Mutation {

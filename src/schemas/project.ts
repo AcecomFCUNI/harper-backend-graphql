@@ -1,7 +1,7 @@
 import { Static, Type } from '@sinclair/typebox'
 
-import { id } from 'schemas'
 import { areaDto } from './area'
+import { id } from './helpers'
 import { memberDto } from './member'
 
 const projectDto = Type.Object({

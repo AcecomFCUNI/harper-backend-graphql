@@ -1,6 +1,6 @@
 import { Static, Type } from '@sinclair/typebox'
 
-import { id } from 'schemas'
+import { id } from './helpers'
 
 const statusDto = Type.Object({
   id: Type.Optional(id),
